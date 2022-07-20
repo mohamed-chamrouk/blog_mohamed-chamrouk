@@ -5,7 +5,6 @@ import { Provider } from 'react-redux';
 import store from './store.js'
 
 import RoutesTree from './components/RoutesTree'
-import App from './App'
 
 import './index.css';
 import reportWebVitals from './reportWebVitals';

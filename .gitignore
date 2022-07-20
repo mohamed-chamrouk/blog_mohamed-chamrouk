@@ -1,3 +1,4 @@
+#--frontend--
 # dependencies
 /frontend/node_modules
 /frontend/.pnp
@@ -20,3 +21,6 @@
 /frontend/yarn-debug.log*
 /frontend/yarn-error.log*
 
+#--backend--
+#dependencies
+/backend/node_modules

@@ -36,14 +36,17 @@ function BlogDetail() {
 
     return (
         <>
-            <div className="mt-3 mb-3 flex flex-col justify-start w-full">
-                <div className="flex flex-row justify-center items-start pb-2 pt-7"><Link to="/" ><span className="rounded-full px-3 sm:px-4 pb-1 mb-10 mr-1 bg-gray-200 font-bold text-xl sm:text-3xl ">&#8249;</span></Link> <p className="pr-[35px] sm:pr-[46px] flex-1 text-center font-bold text-xl sm:text-3xl">{title}</p></div>
-                <p className="font-normal text-center text-sm pb-6 "><span className="font-medium">{tags}</span> &#8226; {postTime}</p>
+            <div className="mt-3 mb-3 pb-7 flex flex-col justify-start w-full">
+                <div className="flex flex-row justify-center items-start pb-2 pt-7">
+                    <Link to="/" ><span className="transition-colors hover:text-cyan-700 dark:hover:text-cyan-300 rounded-full px-3 sm:px-4 pb-1 mb-10 mr-1 bg-gray-200 dark:bg-gray-700 dark:text-white font-bold text-xl sm:text-3xl ">&#8249;</span></Link>
+                    <p className="dark:text-white pr-[35px] sm:pr-[46px] flex-1 text-center font-bold text-xl sm:text-3xl">{title}</p>
+                </div>
+                <p className="font-normal text-center text-sm pb-6 dark:text-white"><span className="font-medium">{tags}</span> &#8226; {postTime}</p>
                 {renderedImage}
                 <div className="flex flex-1 items-center flex-col justify-center">
-                    <ReactMarkdown className="font-normal text-gray-700 text-base sm:text-lg pb-3  max-w-4xl items-center">{content}</ReactMarkdown>
+                    <ReactMarkdown className="font-normal dark:text-gray-200 text-gray-700 text-base sm:text-lg pb-3  max-w-4xl items-center">{content}</ReactMarkdown>
                 </div>
-                <p className="font-medium flex justify-end flex-1 items-end text-sm">{author}</p>
+                <p className="font-medium dark:text-white flex justify-end flex-1 items-end text-sm">{author}</p>
             </div >
         </>
     )
