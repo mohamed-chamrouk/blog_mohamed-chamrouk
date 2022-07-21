@@ -10,5 +10,5 @@ jobs:
         working-directory: ./frontend
         run: npm ci
       - name: Testing the app
-        working-directory: frontend/components
+        working-directory: frontend/src/components
         run: npm test
