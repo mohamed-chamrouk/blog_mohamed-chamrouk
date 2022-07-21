@@ -3,21 +3,11 @@ import React from 'react';
 import { Fragment } from 'react'
 import { Popover, Transition } from '@headlessui/react'
 import {
-  BookmarkAltIcon,
   BriefcaseIcon,
-  CalendarIcon,
-  ChartBarIcon,
-  CursorClickIcon,
   HomeIcon,
   MenuIcon,
-  PhoneIcon,
   PhotographIcon,
-  PlayIcon,
   PresentationChartBarIcon,
-  RefreshIcon,
-  ShieldCheckIcon,
-  SupportIcon,
-  ViewGridIcon,
   XIcon,
 } from '@heroicons/react/outline'
 

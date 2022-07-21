@@ -1,0 +1,14 @@
+name: test-github-action
+on: [push]
+jobs:
+  check-render-app:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+      - name: Installing dependencies
+        working-directory: ./frontend
+        run: npm ci
+      - name: Testing the app
+        working-directory: ./frontend/components
+        run: npm test
