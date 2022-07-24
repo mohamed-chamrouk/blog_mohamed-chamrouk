@@ -9,8 +9,11 @@ import {
 import Layout from './Layout.js'
 import Home from './blog/BlogPosts'
 import Post from './post/Post.js'
+import Portfolio from './portfolio/Portfolio.js';
+import RouteNotFound from './RouteNotFound.js';
+import About from './about/About.js'
 
-const App = () => {
+export const App = () => {
     const location = useLocation()
 
     return (
@@ -20,6 +23,9 @@ const App = () => {
                     <Routes location={location}>
                         <Route path="/" element={<Home />} />
                         <Route path="/post/:id" element={<Post />} />
+                        <Route path="/about" element={<About/>}/>
+                        <Route path="/portfolio" element={<Portfolio/>}/>
+                        <Route path="*" element={<RouteNotFound/>}/>
                     </Routes>
                 </CSSTransition>
             </TransitionGroup>

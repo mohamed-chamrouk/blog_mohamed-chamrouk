@@ -20,18 +20,8 @@ const tabs = [
     icon: HomeIcon
   },
   {
-    name: 'Projets',
-    href: '#',
-    icon: PresentationChartBarIcon
-  },
-  {
-    name: 'Portfolio',
-    href: '#',
-    icon: PhotographIcon
-  },
-  {
     name: 'A propos de moi',
-    href: '#',
+    href: '/about',
     icon: BriefcaseIcon
   }
 ]
@@ -39,8 +29,8 @@ const tabs = [
 function Layout(props) {
   return (
     <>
-      <Popover className="relative h-full bg-white dark:bg-gray-900">
-        <div className="max-w-7xl mx-auto h-full">
+      <Popover className="relative min-h-full bg-white dark:bg-gray-900">
+        <div className="max-w-7xl mx-auto">
           <div className="sticky top-0 mx-4 sm:mx-6 bg-white dark:bg-gray-900 flex justify-between items-center border-b-2 border-gray-100 dark:border-gray-800 py-3 sm:py-6 lg:justify-start lg:space-x-10">
             <Link className="flex justify-start items-center" to="/">
               <span className="sr-only">Mohamed Chamrouk.</span>
@@ -59,9 +49,9 @@ function Layout(props) {
             </div>
             <div className="hidden lg:flex space-x-10">
               {tabs.map((item) => (
-                <a href={item.href} className="transition-colors text-base font-medium text-gray-500 hover:text-gray-900 dark:hover:text-white" key={item.name}>
+                <Link to={item.href} className="transition-colors text-base font-medium text-gray-500 hover:text-gray-900 dark:hover:text-white" key={item.name}>
                   {item.name}
-                </a>
+                </Link>
               ))}
             </div>
             <div className="hidden items-center justify-end lg:flex-1 lg:w-0">
@@ -107,14 +97,14 @@ function Layout(props) {
                 <div className="mt-6">
                   <nav className="grid gap-y-8">
                     {tabs.map((item) => (
-                      <a
+                      <Link
                         key={item.name}
-                        href={item.href}
+                        to={item.href}
                         className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50 dark:hover:bg-gray-700"
                       >
                         <item.icon className="flex-shrink-0 h-6 w-6 text-cyan-500" aria-hidden="true" />
                         <span className="ml-3 text-base font-medium dark:text-gray-100 text-gray-900">{item.name}</span>
-                      </a>
+                      </Link>
                     ))}
                   </nav>
                 </div>

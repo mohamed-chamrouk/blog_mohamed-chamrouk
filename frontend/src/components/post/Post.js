@@ -4,33 +4,25 @@ import { useParams } from 'react-router'
 import { Link } from 'react-router-dom'
 import ReactMarkdown from 'react-markdown'
 
-import { IoReturnDownBackOutline } from 'react-icons/io5'
-
 import store from '../../store'
-import { fetchUniquePost, selectPosts } from './postSlice'
+import { fetchUniquePost, selectPost } from './postSlice'
 
-function BlogDetail() {
-    const { id } = useParams()
+function Post(props) {
+    let { id } = useParams()
+    id = id === undefined ? props.id : id
 
     useEffect(() => {
         store.dispatch(fetchUniquePost(id))
     }, [])
 
-    let post = useSelector(selectPosts)
+    let post = useSelector(selectPost)
 
-    post = post[0]
+    post = post === undefined ? post : post[0]
     //TODO : clean this up to not have to select out of an array
 
-    const placeHolderPost = { "_id": "62d2afcc7515204b5e5a6bd6", "title": "Post loading...", "content": "", "hidden": true, "pinned": false, "tags": [""], "postTime": "", "author": "" }
+    const placeHolderPost = { "_id": "62d2afcc7515204b5e5a6bd6", "title": "Post loading...", "content": "", "hidden": true, "pinned": false, "tags": [""], "postTime": "", "author": "", "image": "" }
 
     const { image, tags, title, content, postTime, author } = post === undefined ? placeHolderPost : post
-
-    if ([tags, title, content, postTime, author].map((item) => typeof item === undefined).includes(true)) {
-        return (
-            <>
-            </>
-        )
-    }
 
     const renderedImage = image !== undefined ? <img className="rounded-lg flex w-full bg-auto justify-start mr-7 pb-7" src={image} /> : <></>
 
@@ -52,4 +44,4 @@ function BlogDetail() {
     )
 }
 
-export default BlogDetail
+export default Post
