@@ -3,7 +3,7 @@ var router = express.Router()
 
 const MongoClient = require('mongodb').MongoClient
 const ObjectID = require('mongodb').ObjectID
-const url = 'mongodb://localhost:27017'
+const url = `mongodb+srv://snow:${process.env.MONGODB_PASS}@blog.xtkdtqa.mongodb.net/?retryWrites=true&w=majority`
 
 MongoClient.connect(url, function(err, client) {
 	if (err) {
