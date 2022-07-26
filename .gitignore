@@ -24,3 +24,7 @@
 #--backend--
 #dependencies
 /backend/node_modules
+
+#--production--
+#script
+*.config.js
