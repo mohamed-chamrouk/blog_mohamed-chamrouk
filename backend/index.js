@@ -12,6 +12,10 @@ app.use('/api/db', dbHandler)
 
 app.use(express.static("../frontend/build"))
 
+app.use('/*', (req, res) => {
+	res.sendFile(path.join(__dirname, '../', 'frontend', 'build', 'index.html'));
+});
+
 /**
  * Starting point of the server
  * @function
