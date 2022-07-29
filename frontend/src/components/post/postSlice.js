@@ -1,8 +1,8 @@
-import { createSlice, createAsyncThunk, createEntityAdapter, createSelector } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk, createEntityAdapter } from '@reduxjs/toolkit';
 
 export const fetchUniquePost = createAsyncThunk('/post/fetchUniquePost', async (id) => {
     let output;
-    await fetch(`http://${process.env.API_ADDRESS}:4000/api/db/getUniquePost?id=${id}`).then(res => res.json()).then((data) => {
+    await fetch(`${process.env.REACT_APP_API_URL}/api/db/getUniquePost?id=${id}`).then(res => res.json()).then((data) => {
         output = data[0]
     })
     return [{ 'id': output._id, ...output }]

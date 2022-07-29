@@ -1,14 +1,46 @@
 name: test-github-action
-on: [push]
+on:
+  push:
+    branches:
+      - main
 jobs:
-  check-render-app:
+  testing-frontend-app:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
+
       - name: Installing dependencies
         working-directory: ./frontend
         run: npm ci
+
       - name: Testing the app
         working-directory: frontend/src/tests
         run: npm test
+
+
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+
+      - name: Frontend - Installing dependencies
+        working-directory: ./frontend
+        run: npm ci
+
+      - name: Frontend - build
+        working-directory: ./frontend
+        run: npm run build
+
+      - name: Install SSH Key
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.SSH_ACTIONS_KEY }}
+          known_hosts: unnecessary
+
+      - name: Adding Known Hosts
+        run: ssh-keyscan -H ${{ secrets.SERVER_HOST }}  >> ~/.ssh/known_hosts
+
+      - name: Deploy with zsync
+        run: rsync -avz -e "ssh" ./dist/ ${{ secrets.SSH_USER }}@$212.111.40.134:/var/www/zellwk.com/

@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk, createEntityAdapter, createSelector } fr
 
 export const fetchPosts = createAsyncThunk('/blog/fetchPosts', async() => {
     let output;
-    await fetch(`http://${process.env.API_ADDRESS}:4000/api/db/getPosts`).then(res => res.json()).then((data) => {
+    await fetch(`${process.env.REACT_APP_API_URL}/api/db/getPosts`).then(res => res.json()).then((data) => {
         output = data
     })
     return {'id': output.map((item) => item._id), 'entities': output}

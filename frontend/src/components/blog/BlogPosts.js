@@ -13,6 +13,9 @@ function BlogPosts() {
     }, [])
 
     const posts = useSelector(selectBlog)
+
+    console.log(posts[0])
+
     let renderedPosts = [], renderPinnedPost = []
 
     //TODO : Fix the fact that the posts sw up in a grid rather than in two columns with separate scales
