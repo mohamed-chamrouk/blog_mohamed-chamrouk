@@ -12,7 +12,7 @@ MongoClient.connect(url, function(err, client) {
 
 	db = client.db('blog')
 	blogCollection = db.collection('posts')
-	console.log(`[server] @ ${(new Date()).toLocaleString()} - MongoDB : Successfully conected to ${url}`)
+	console.log(`[server] @ ${(new Date()).toLocaleString()} - MongoDB : Successfully conected`)
 })
 
 
