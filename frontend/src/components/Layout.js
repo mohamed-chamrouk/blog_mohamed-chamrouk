@@ -6,8 +6,6 @@ import {
   BriefcaseIcon,
   HomeIcon,
   MenuIcon,
-  PhotographIcon,
-  PresentationChartBarIcon,
   XIcon,
 } from '@heroicons/react/outline'
 
@@ -55,7 +53,7 @@ function Layout(props) {
               ))}
             </div>
             <div className="hidden items-center justify-end lg:flex-1 lg:w-0">
-              <a href="#" className="flex items-center justify-center px-4 py-2 border border-transparent text-base font-medium rounded-lg text-cyan-500 bg-cyan-100 hover:bg-cyan-200 focus:ring focus:ring-cyan-50">
+              <a href="/login" className="flex items-center justify-center px-4 py-2 border border-transparent text-base font-medium rounded-lg text-cyan-500 bg-cyan-100 hover:bg-cyan-200 focus:ring focus:ring-cyan-50">
                 S'identifier
               </a>
             </div>
@@ -111,7 +109,7 @@ function Layout(props) {
               </div>
               <div className="hidden py-6 px-5 space-y-6">
                 <div>
-                  <a href="#" className="w-full flex items-center justify-center px-4 py-2 border border-transparent text-base font-medium rounded-lg text-cyan-500 bg-cyan-100 hover:bg-cyan-200 focus:ring focus:ring-cyan-100">
+                  <a href="/login" className="w-full flex items-center justify-center px-4 py-2 border border-transparent text-base font-medium rounded-lg text-cyan-500 bg-cyan-100 hover:bg-cyan-200 focus:ring focus:ring-cyan-100">
                     S'identifier
                   </a>
                 </div>

@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom'
 function PinnedPost(props) {
     const { image, tags, title, content, date, author, id } = props
 
-    if ([tags, title, content, date, author].map((item) => typeof item === undefined).includes(true)) {
+    if ([tags, title, content, date, author].map((item) => item === undefined).includes(true)) {
         return (
             <>
             </>
@@ -17,7 +17,7 @@ function PinnedPost(props) {
 
     const contentSummary = content.slice(0, 350)
 
-    const renderedImage = image !== undefined ? <img className="rounded-lg flex w-full sm:w-1/2 bg-contain justify-start mr-7" src={image} /> : <><img className="rounded-lg flex w-full sm:w-1/2 h-full justify-start mr-7" src={blog_default} /></>
+    const renderedImage = image !== undefined ? <img alt="post" className="rounded-lg flex w-full sm:w-1/2 bg-contain justify-start mr-7" src={image} /> : <><img alt="post" className="rounded-lg flex w-full sm:w-1/2 h-full justify-start mr-7" src={blog_default} /></>
 
     const returnLink = `/post/${id}`
 

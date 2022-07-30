@@ -1,7 +1,5 @@
 import React from "react"
 
-import ReactMarkdown from "react-markdown"
-
 import {MailIcon} from '@heroicons/react/outline'
 import {AiOutlineLinkedin, AiOutlineGithub} from 'react-icons/ai'
 
@@ -107,7 +105,7 @@ function About() {
 
                     {education.map((item) => (
                         <div key={item.name} className="dark:text-white boder border-2 border-gray-100 dark:border-gray-700 dark:bg-gray-800 p-5 my-2 rounded-lg  flex flex-row items-center justify-start gap-5">
-                            <img className="w-10" src={`/images/about/${item.image}`} />
+                            <img className="w-10" alt={item.name} src={`/images/about/${item.image}`} />
                             <p className="w-20 text-base sm:text-xl">{item.name}</p>
                             <div>
                                 <p className="text-base sm:text-lg font-bold">{item.field}</p>
@@ -128,7 +126,7 @@ function About() {
                     <br /><br />
                     {projets.map((item) => (
                         <div key={item.description} className="dark:text-white boder border-2 border-gray-100 dark:border-gray-700 dark:bg-gray-800 p-5 my-2 rounded-lg  flex flex-row items-center justify-start gap-5">
-                            <img className="w-10" src={`/images/about/${item.image}`} />
+                            <img className="w-10" alt={item.name} src={`/images/about/${item.image}`} />
                             <p className="hidden sm:flex text-base sm:text-xl">{item.name}</p>
                             <div>
                                 <p className="sm:hidden text-base sm:text-xl">{item.name}</p>
@@ -145,7 +143,7 @@ function About() {
                     <br /><br />
                     {jobs.reverse().map((item) => (
                         <div key={item.description} className="dark:text-white boder border-2 border-gray-100 dark:border-gray-700 dark:bg-gray-800 p-5 my-2 rounded-lg  flex flex-row items-center justify-start gap-5">
-                            <img className="w-10" src={`/images/about/${item.image}`} />
+                            <img className="w-10" alt={item.name} src={`/images/about/${item.image}`} />
                             <div className="w-2/3">
                                 <p className="text-base sm:text-lg font-light">{item.name}</p>
                                 <p className="text-base sm:text-lg font-bold">{item.company}</p>

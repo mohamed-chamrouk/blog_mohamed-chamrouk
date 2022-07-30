@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom'
 function SinglePost(props) {
     const {image, tags, title, content, date, author, id} = props
 
-    if ([tags, title, content, date, author].map((item) => typeof item === undefined).includes(true)) {
+    if ([tags, title, content, date, author].map((item) => item === undefined).includes(true)) {
         return(
             <>
             </>
@@ -16,7 +16,7 @@ function SinglePost(props) {
         tag.concat(`${element}, `)
     });*/
 
-    const renderedImage = image !== undefined ? <img className="rounded-lg flex w-full bg-auto justify-start mr-7" src={image} /> : <></>
+    const renderedImage = image !== undefined ? <img alt="post" className="rounded-lg flex w-full bg-auto justify-start mr-7" src={image} /> : <></>
     
     const returnLink = `/post/${id}`
 
