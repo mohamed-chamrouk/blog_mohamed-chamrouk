@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useParams } from 'react-router'
 import { Link } from 'react-router-dom'
-import {rehypeRaw} from "rehype-raw"
+import rehypeRaw from "rehype-raw"
 import ReactMarkdown from 'react-markdown'
 
 import store from '../../store'
