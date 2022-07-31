@@ -1,5 +1,5 @@
 // src/__mocks__/react-markdown.js
-function ReactMarkdown({ children }){
+function ReactMarkdown(props, { children }){
     return <>{children}</>;
   }
   
