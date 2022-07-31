@@ -10,15 +10,17 @@
     "mongodb": "^4.8.0",
     "msw": "^0.44.2",
     "react": "^18.2.0",
+    "react-cookie": "^4.1.1",
     "react-dom": "^18.2.0",
     "react-icons": "^4.4.0",
     "react-markdown": "^8.0.3",
     "react-scripts": "5.0.1",
     "react-transition-group": "^4.4.2",
+    "rehype-raw": "^6.1.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "concurrently \"react-scripts start\" \"cd ../backend && npm run dev\"",
+    "start": "concurrently \"react-scripts start\" \"cd ../backend && NODE_DB=posts-test npm run dev\"",
     "build": "CI=false && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

@@ -11,7 +11,7 @@ MongoClient.connect(url, function(err, client) {
 	}
 
 	db = client.db('blog')
-	blogCollection = db.collection('posts')
+	blogCollection = db.collection(process.env.NODE_DB)
 	console.log(`[server] @ ${(new Date()).toLocaleString()} - MongoDB : Successfully conected`)
 })
 
@@ -69,6 +69,31 @@ router.get('/getUniquePost', (req, res) => {
 		if (err) {
 			return}
 		res.json(data)})
+})
+
+
+/**
+ * Getting the posts
+ * @name get/db/addPosts
+ * @function
+ * @memberof:routers/dbHandler
+ * @returns {array} An array of all the json posts
+ */
+ router.get('/addPosts', (req, res) => {
+	const {title, content, hidden, pinned, tags, author, description, image} = req.body
+
+	const post = {
+		title:title,
+		content:content,
+		hidden:hidden,
+		pinned:pinned,
+		tags:tags,
+		author:author,
+		description:description,
+		image:image
+	}
+
+	blogCollection.insertOne(post)
 })
 
 

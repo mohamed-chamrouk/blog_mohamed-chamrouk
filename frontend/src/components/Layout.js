@@ -1,12 +1,16 @@
 import { Link } from "react-router-dom";
-import React from 'react';
-import { Fragment } from 'react'
-import { Popover, Transition } from '@headlessui/react'
+import React, { useEffect } from 'react';
+import { Fragment, useState } from 'react'
+import { Popover, Transition, Switch } from '@headlessui/react'
+import { useCookies } from 'react-cookie'
+
 import {
   BriefcaseIcon,
   HomeIcon,
   MenuIcon,
   XIcon,
+  MoonIcon,
+  SunIcon
 } from '@heroicons/react/outline'
 
 import logo from '../ressources/logo.svg'
@@ -25,6 +29,24 @@ const tabs = [
 ]
 
 function Layout(props) {
+  const [cookies, setCookie, removeCookie] = useCookies(['dark'])
+  const [darkMode, setDarkMode] = useState(cookies.dark === 'true')
+
+  useEffect(() => {
+    if (darkMode === true) {
+      document.getElementsByTagName("html")[0].classList.add('dark')
+    } else {
+      document.getElementsByTagName('html')[0].classList.remove('dark')
+    }
+    setCookie("dark", darkMode, { sameSite: 'none', secure: true })
+  }, [darkMode])
+
+  useEffect(() => {
+    if (darkMode === true) {
+      document.getElementsByTagName("html")[0].classList.add('dark')
+    }
+  }, [])
+
   return (
     <>
       <Popover className="relative min-h-full bg-white dark:bg-gray-900">
@@ -39,7 +61,7 @@ function Layout(props) {
               />
               <p className="ml-3 text-black dark:text-white font-bold leading-5 text-sm sm:text-base" >Mohamed<br />Chamrouk.</p>
             </Link>
-            <div className="-mr-2 -my-2 lg:hidden">
+            <div className="my-2 lg:hidden">
               <Popover.Button className="bg-white dark:bg-gray-900 rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-200 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-cyan-100 dark:focus:ring-cyan-900">
                 <span className="sr-only">Open menu</span>
                 <MenuIcon className="h-6 w-6" aria-hidden="true" />
@@ -51,6 +73,24 @@ function Layout(props) {
                   {item.name}
                 </Link>
               ))}
+            </div>
+            <div className="hidden lg:flex lg:flex-1 items-center justify-end w-0">
+              {!darkMode ? <MoonIcon className="h-5 mr-2 text-gray-700" /> : <SunIcon className="h-5 mr-2 text-gray-200" />}
+              <Switch
+                checked={darkMode}
+                onChange={
+                  setDarkMode
+                }
+                className={`${darkMode ? 'bg-gray-800' : 'bg-gray-200'
+                  } relative inline-flex h-6 w-11 items-center rounded-full`}
+              >
+                <span className="sr-only">Dark mode</span>
+                <span
+                  className={`transform transition ease-in-out duration-200 
+                ${darkMode ? 'translate-x-6' : 'translate-x-1'
+                    } inline-block h-4 w-4 transform rounded-full bg-white`}
+                />
+              </Switch>
             </div>
             <div className="hidden items-center justify-end lg:flex-1 lg:w-0">
               <a href="/login" className="flex items-center justify-center px-4 py-2 border border-transparent text-base font-medium rounded-lg text-cyan-500 bg-cyan-100 hover:bg-cyan-200 focus:ring focus:ring-cyan-50">
@@ -113,6 +153,24 @@ function Layout(props) {
                     S'identifier
                   </a>
                 </div>
+              </div>
+              <div className="w-full flex border-none py-6 px-5 items-center justify-center">
+                {!darkMode ? <MoonIcon className="h-5 mr-2 text-gray-700" /> : <SunIcon className="h-5 mr-2 text-gray-200" />}
+                <Switch
+                  checked={darkMode}
+                  onChange={
+                    setDarkMode
+                  }
+                  className={`${darkMode ? 'bg-gray-700' : 'bg-gray-200'
+                    } relative inline-flex h-6 w-11 items-center rounded-full`}
+                >
+                  <span className="sr-only">Dark mode</span>
+                  <span
+                    className={`transform transition ease-in-out duration-200 
+                ${darkMode ? 'translate-x-6' : 'translate-x-1'
+                      } inline-block h-4 w-4 transform rounded-full bg-white`}
+                  />
+                </Switch>
               </div>
             </div>
           </Popover.Panel>

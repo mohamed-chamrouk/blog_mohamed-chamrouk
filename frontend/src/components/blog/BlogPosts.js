@@ -47,7 +47,7 @@ function BlogPosts() {
             </div>
 
             {/* Recent posts */}
-            <div className="sm:grid sm:grid-cols-2 odd:col-start-1 odd:col-end-2 even:col-start-2 even:col-end-3 gap-7">
+            <div className="">
                 {renderedPosts}
             </div>
         </div>

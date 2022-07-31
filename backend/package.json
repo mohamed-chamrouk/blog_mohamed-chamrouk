@@ -5,7 +5,8 @@
   "main": "api.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js",
+    "start": "NODE_DB=posts node index.js",
+    "start-dev": "NODE_DB=posts-test node index.js",
     "dev": "nodemon -q index.js"
   },
   "author": "",
