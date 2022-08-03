@@ -8,6 +8,7 @@ import {
 
 import Layout from './Layout.js'
 import Home from './blog/BlogPosts'
+import NewPost from './blog/editing/NewPost'
 import Post from './post/Post.js'
 import Portfolio from './portfolio/Portfolio.js';
 import RouteNotFound from './RouteNotFound.js';
@@ -26,6 +27,7 @@ export const App = () => {
                         <Route path="/about" element={<About/>}/>
                         <Route path="/portfolio" element={<Portfolio/>}/>
                         <Route path="*" element={<RouteNotFound/>}/>
+                        <Route path="/post/new" element={<NewPost/>}/>
                     </Routes>
                 </CSSTransition>
             </TransitionGroup>

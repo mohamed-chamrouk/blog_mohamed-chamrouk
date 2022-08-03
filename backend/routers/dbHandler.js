@@ -74,12 +74,12 @@ router.get('/getUniquePost', (req, res) => {
 
 /**
  * Getting the posts
- * @name get/db/addPosts
+ * @name post/db/addPosts
  * @function
  * @memberof:routers/dbHandler
  * @returns {array} An array of all the json posts
  */
- router.get('/addPosts', (req, res) => {
+ router.post('/addPost', (req, res) => {
 	const {title, content, hidden, pinned, tags, author, description, image} = req.body
 
 	const post = {

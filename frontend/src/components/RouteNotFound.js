@@ -5,7 +5,7 @@ import { Link } from "react-router-dom"
 function RouteNotFound() {
     return (
         <>
-            <div className="text-center">
+            <div className="text-center dark:text-white">
                 <div className="text-8xl text-center pt-8 text-cyan-500 font-bold">
                     404
                 </div>

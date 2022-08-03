@@ -10,7 +10,9 @@ import {
   MenuIcon,
   XIcon,
   MoonIcon,
-  SunIcon
+  SunIcon,
+  UserIcon,
+  KeyIcon
 } from '@heroicons/react/outline'
 
 import logo from '../ressources/logo.svg'
@@ -61,7 +63,7 @@ function Layout(props) {
               />
               <p className="ml-3 text-black dark:text-white font-bold leading-5 text-sm sm:text-base" >Mohamed<br />Chamrouk.</p>
             </Link>
-            <div className="my-2 lg:hidden">
+            <div className="my-2 flex-1 flex justify-end lg:hidden">
               <Popover.Button className="bg-white dark:bg-gray-900 rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-200 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-cyan-100 dark:focus:ring-cyan-900">
                 <span className="sr-only">Open menu</span>
                 <MenuIcon className="h-6 w-6" aria-hidden="true" />
@@ -92,11 +94,77 @@ function Layout(props) {
                 />
               </Switch>
             </div>
-            <div className="hidden items-center justify-end lg:flex-1 lg:w-0">
-              <a href="/login" className="flex items-center justify-center px-4 py-2 border border-transparent text-base font-medium rounded-lg text-cyan-500 bg-cyan-100 hover:bg-cyan-200 focus:ring focus:ring-cyan-50">
-                S'identifier
-              </a>
-            </div>
+
+            <Popover className="relative">
+              {({ open }) => (
+                <>
+                  <Popover.Button
+                    className={`
+                ${open ? '' : 'text-opacity-90'}`}
+                  >
+                    <div className="lg:ml-0 hidden items-center justify-end lg:flex">
+                      <a href="/login" className="flex items-center justify-center px-4 py-2 border border-transparent text-base font-medium rounded-lg text-cyan-500 bg-cyan-100 hover:bg-cyan-200 focus:ring focus:ring-cyan-50">
+                        S'identifier
+                      </a>
+                    </div>
+                  </Popover.Button>
+                  <Transition
+                    as={Fragment}
+                    enter="transition ease-out duration-200"
+                    enterFrom="opacity-0 translate-y-1"
+                    enterTo="opacity-100 translate-y-0"
+                    leave="transition ease-in duration-150"
+                    leaveFrom="opacity-100 translate-y-0"
+                    leaveTo="opacity-0 translate-y-1"
+                  >
+                    <Popover.Panel className="absolute z-10 mt-3 -translate-x-[200px] transform px-4 sm:px-0 lg:max-w-3xl">
+                      <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
+                        <div className="relative bg-white dark:bg-gray-800 p-7">
+                          <form action="http://localhost:4000/api/login" method="POST">
+
+                            <div className="flex flex-row justify-center items-center gap-2">
+                              <label htmlFor="username" className="h-auto w-7 block text-sm font-medium text-gray-700 dark:text-gray-200">
+                                <UserIcon />
+                              </label>
+                              <div className="mt-1 flex rounded-md shadow-sm">
+                                <input
+                                  type="text"
+                                  name="username"
+                                  id="username"
+                                  placeholder="username"
+                                  className="dark:text-white focus:border focus:ring-indigo-500 focus:border-cyan-500 p-1 block rounded-md sm:text-sm border border-gray-300 dark:border-gray-700 dark:bg-gray-800"
+                                />
+                              </div>
+                            </div>
+
+                            <div className="flex flex-row justify-center items-center gap-2">
+                              <label htmlFor="password" className="h-auto w-7 block text-sm font-medium text-gray-700 dark:text-gray-200">
+                                <KeyIcon />
+                              </label>
+                              <div className="mt-1 flex rounded-md shadow-sm">
+                                <input
+                                  type="password"
+                                  name="password"
+                                  id="password"
+                                  placeholder="password"
+                                  className="dark:text-white focus:border focus:ring-indigo-500 focus:border-cyan-500 p-1 block rounded-md sm:text-sm border border-gray-300 dark:border-gray-700 dark:bg-gray-800"
+                                />
+                              </div>
+                            </div>
+                            <div className="lg:ml-0 hidden items-center justify-end lg:flex">
+                              <button type="submit" href="/login" className="flex items-center justify-center px-4 py-2 mt-4 w-full border border-transparent text-base font-medium rounded-lg text-cyan-500 bg-cyan-100 hover:bg-cyan-200 focus:ring focus:ring-cyan-50">
+                                S'identifier
+                              </button>
+                            </div>
+
+                          </form>
+                        </div>
+                      </div>
+                    </Popover.Panel>
+                  </Transition>
+                </>
+              )}
+            </Popover>
           </div>
           <div className="px-4 sm:px-6">
             {props.children}
@@ -147,12 +215,45 @@ function Layout(props) {
                   </nav>
                 </div>
               </div>
-              <div className="hidden py-6 px-5 space-y-6">
-                <div>
-                  <a href="/login" className="w-full flex items-center justify-center px-4 py-2 border border-transparent text-base font-medium rounded-lg text-cyan-500 bg-cyan-100 hover:bg-cyan-200 focus:ring focus:ring-cyan-100">
-                    S'identifier
-                  </a>
-                </div>
+              <div className="py-6 px-5 space-y-6 border-none">
+                <form action="/login" method="POST">
+
+                  <div className="flex flex-row justify-center items-center gap-2 w-full">
+                    <label htmlFor="title" className="h-auto w-7 block text-sm font-medium text-gray-700 dark:text-gray-200">
+                      <UserIcon />
+                    </label>
+                    <div className="mt-1 flex w-2/3 rounded-md">
+                      <input
+                        type="text"
+                        name="username"
+                        id="username"
+                        placeholder="username"
+                        className="focus:border w-full shadow-sm focus:ring-indigo-500 focus:border-cyan-500 p-1 block rounded-md sm:text-sm border border-gray-300 dark:border-gray-700 dark:bg-gray-800"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="flex flex-row justify-center items-center gap-2">
+                    <label htmlFor="title" className="h-auto w-7 block text-sm font-medium text-gray-700 dark:text-gray-200">
+                      <KeyIcon />
+                    </label>
+                    <div className="mt-1 flex w-2/3 rounded-md">
+                      <input
+                        type="password"
+                        name="password"
+                        id="password"
+                        placeholder="password"
+                        className="dark:text-white focus:border w-full shadow-sm focus:ring-indigo-500 focus:border-cyan-500 p-1 block rounded-md sm:text-sm border border-gray-300 dark:border-gray-700 dark:bg-gray-800"
+                      />
+                    </div>
+                  </div>
+                  <div className="items-center justify-end flex">
+                    <button type="submit" href="/login" className="flex items-center justify-center px-4 py-2 mt-4 w-full border border-transparent text-base font-medium rounded-lg text-cyan-500 bg-cyan-100 hover:bg-cyan-200 focus:ring focus:ring-cyan-50">
+                      S'identifier
+                    </button>
+                  </div>
+
+                </form>
               </div>
               <div className="w-full flex border-none py-6 px-5 items-center justify-center">
                 {!darkMode ? <MoonIcon className="h-5 mr-2 text-gray-700" /> : <SunIcon className="h-5 mr-2 text-gray-200" />}

@@ -4,11 +4,15 @@ const cors = require('cors')
 
 const port = 4000
 const dbHandler = require('./routers/dbHandler.js')
+const loginHandler = require('./routers/loginHandler.js')
 
 const app = express()
 
+app.use(express.json())
+app.use(express.urlencoded())
 app.use(cors())
 app.use('/api/db', dbHandler)
+app.use('/api', loginHandler)
 
 app.use(express.static("../frontend/build"))
 
@@ -17,7 +21,7 @@ app.use('/*', (req, res) => {
 });
 
 /**
- * Starting point of the server
+ * Endpoint for testing purposes
  * @function
  */
 app.get('/api', (req, res) => {

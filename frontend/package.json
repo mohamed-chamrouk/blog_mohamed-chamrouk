@@ -20,7 +20,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "concurrently \"react-scripts start\" \"cd ../backend && NODE_DB=posts-test npm run dev\"",
+    "start": "concurrently \"react-scripts start\" \"cd ../backend && SECRET_KEY=obunga NODE_DB=posts-test npm run dev\"",
     "build": "CI=false && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -48,6 +48,7 @@
     "@testing-library/user-event": "^14.3.0",
     "autoprefixer": "^10.4.7",
     "concurrently": "^7.3.0",
+    "eslint": "^8.21.0",
     "postcss": "^8.4.14",
     "react-redux": "^8.0.2",
     "react-router": "^6.3.0",

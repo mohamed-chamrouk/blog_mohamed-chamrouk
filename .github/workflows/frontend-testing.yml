@@ -1,4 +1,4 @@
-name: test-github-action
+name: frontend-testing
 on:
   push:
     branches:
